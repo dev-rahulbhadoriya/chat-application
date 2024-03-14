@@ -2,6 +2,13 @@
 
 This is a chat application built using Node.js, Socket.IO, JSON Web Token (JWT), Express, Morgan, Multer for the backend, and Vite, React, Tailwind CSS, Heroicons, and Socket.IO client for the frontend.
 
+## How to use this application
+
+- Step 1: Go to the registration page and enter your email, username, and password.
+- Step 2: Navigate to the login page and enter your username and password.
+- Step 3: To start chatting, click on the "ADD Chat" button.
+- Step 4: Select a user to begin chatting.
+
 ## Technologies Used
 
 ### Backend
