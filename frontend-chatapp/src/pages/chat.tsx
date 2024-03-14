@@ -312,27 +312,18 @@ const ChatPage = () => {
     // If the socket isn't initialized, we don't set up listeners.
     if (!socket) return;
 
-    // Set up event listeners for various socket events:
-    // Listener for when the socket connects.
+  
     socket.on(CONNECTED_EVENT, onConnect);
-    // Listener for when the socket disconnects.
     socket.on(DISCONNECT_EVENT, onDisconnect);
-    // Listener for when a user is typing.
     socket.on(TYPING_EVENT, handleOnSocketTyping);
-    // Listener for when a user stops typing.
     socket.on(STOP_TYPING_EVENT, handleOnSocketStopTyping);
-    // Listener for when a new message is received.
     socket.on(MESSAGE_RECEIVED_EVENT, onMessageReceived);
-    // Listener for the initiation of a new chat.
     socket.on(NEW_CHAT_EVENT, onNewChat);
-    // Listener for when a user leaves a chat.
     socket.on(LEAVE_CHAT_EVENT, onChatLeave);
-    // Listener for when a group's name is updated.
     socket.on(UPDATE_GROUP_NAME_EVENT, onGroupNameChange);
 
     // When the component using this hook unmounts or if `socket` or `chats` change:
     return () => {
-      // Remove all the event listeners we set up to avoid memory leaks and unintended behaviors.
       socket.off(CONNECTED_EVENT, onConnect);
       socket.off(DISCONNECT_EVENT, onDisconnect);
       socket.off(TYPING_EVENT, handleOnSocketTyping);
@@ -343,13 +334,6 @@ const ChatPage = () => {
       socket.off(UPDATE_GROUP_NAME_EVENT, onGroupNameChange);
     };
 
-    // Note:
-    // The `chats` array is used in the `onMessageReceived` function.
-    // We need the latest state value of `chats`. If we don't pass `chats` in the dependency array,
-    // the `onMessageReceived` will consider the initial value of the `chats` array, which is empty.
-    // This will not cause infinite renders because the functions in the socket are getting mounted and not executed.
-    // So, even if some socket callbacks are updating the `chats` state, it's not
-    // updating on each `useEffect` call but on each socket call.
   }, [socket, chats]);
 
   return (
@@ -365,8 +349,8 @@ const ChatPage = () => {
       />
 
       <div className="w-full justify-between items-stretch h-screen flex flex-shrink-0">
-        <div className="w-1/3 relative ring-white overflow-y-auto px-4">
-          <div className="z-10 w-full sticky top-0 bg-dark py-4 flex justify-between items-center gap-4">
+        <div className="w-1/3 relative bg-slate-400 overflow-y-auto px-2">
+          <div className="z-10 w-full sticky top-0 bg-gray py-4 flex justify-between items-center gap-4">
             <Input
               placeholder="Search user or group..."
               value={localSearchQuery}
@@ -388,14 +372,12 @@ const ChatPage = () => {
           ) : (
             // Iterating over the chats array
             [...chats]
-              // Filtering chats based on a local search query
               .filter((chat) =>
-                // If there's a localSearchQuery, filter chats that contain the query in their metadata title
+                
                 localSearchQuery
                   ? getChatObjectMetadata(chat, user!)
                       .title?.toLocaleLowerCase()
-                      ?.includes(localSearchQuery)
-                  : // If there's no localSearchQuery, include all chats
+                      ?.includes(localSearchQuery): 
                     true
               )
               .map((chat) => {
@@ -435,7 +417,7 @@ const ChatPage = () => {
         <div className="w-2/3 border-l-[0.1px] border-secondary">
           {currentChat.current && currentChat.current?._id ? (
             <>
-              <div className="p-4 sticky top-0 bg-dark z-20 flex justify-between items-center w-full border-b-[0.1px] border-secondary">
+              <div className="p-4 sticky top-0 z-20 flex justify-between items-center w-full border-b-[0.1px] border-secondary">
                 <div className="flex justify-start items-center w-max gap-3">
                   {currentChat.current.isGroupChat ? (
                     <div className="w-12 relative h-12 flex-shrink-0 flex justify-start items-center flex-nowrap">
@@ -510,7 +492,7 @@ const ChatPage = () => {
                   </>
                 )}
               </div>
-              {attachedFiles.length > 0 ? (
+              {/* {attachedFiles.length > 0 ? (
                 <div className="grid gap-4 grid-cols-5 p-4 justify-start max-w-fit">
                   {attachedFiles.map((file, i) => {
                     return (
@@ -539,7 +521,7 @@ const ChatPage = () => {
                     );
                   })}
                 </div>
-              ) : null}
+              ) : null} */}
               <div className="sticky top-full p-4 flex justify-between items-center w-full gap-2 border-t-[0.1px] border-secondary">
                 <input
                   hidden
@@ -554,12 +536,12 @@ const ChatPage = () => {
                     }
                   }}
                 />
-                <label
+                {/* <label
                   htmlFor="attachments"
                   className="p-4 rounded-full bg-dark hover:bg-secondary"
                 >
                   <PaperClipIcon className="w-6 h-6" />
-                </label>
+                </label> */}
 
                 <Input
                   placeholder="Message"
@@ -574,7 +556,7 @@ const ChatPage = () => {
                 <button
                   onClick={sendChatMessage}
                   disabled={!message && attachedFiles.length <= 0}
-                  className="p-4 rounded-full bg-dark hover:bg-secondary disabled:opacity-50"
+                  className="p-4 rounded-full bg-success hover:bg-secondary disabled:opacity-50"
                 >
                   <PaperAirplaneIcon className="w-6 h-6" />
                 </button>

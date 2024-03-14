@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Placeholder build script\""
+
   },
   "keywords": [],
   "author": "",
