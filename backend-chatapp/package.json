@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production nodemon -r dotenv/config src/index.js",
+    "start": "NODE_ENV=production dotenv/config src/index.js",
     "dev": "NODE_ENV=development nodemon -r dotenv/config --experimental-json-modules src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"Placeholder build script\""
