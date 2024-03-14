@@ -7,33 +7,27 @@ import { useAuth } from "../context/AuthContext";
 
 // Component for user registration
 const Register = () => {
-  // State to manage user registration data
   const [data, setData] = useState({
     email: "",
     username: "",
     password: "",
   });
 
-  // Access the register function from the authentication context
   const { register } = useAuth();
 
-  // Handle data change for input fields
   const handleDataChange =
     (name: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      // Update the corresponding field in the data state
       setData({
         ...data,
         [name]: e.target.value,
       });
     };
 
-  // Handle user registration
   const handleRegister = async () => await register(data);
 
   return (
-    // Register form UI
     <div className="flex justify-center items-center flex-col h-screen w-screen">
-      <h1 className="text-3xl font-bold">FreeAPI Chat App</h1>
+      <h1 className="text-3xl font-bold">Chat App</h1>
       <div className="max-w-5xl w-1/2 p-8 flex justify-center items-center gap-5 flex-col  shadow-md rounded-2xl my-16 border-secondary border-[1px]">
         <h1 className="inline-flex items-center text-2xl mb-4 flex-col">
           {/* Lock icon */}

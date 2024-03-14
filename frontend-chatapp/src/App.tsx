@@ -32,7 +32,6 @@ const App = () => {
         }
       />
 
-      {/* Public login route: Accessible by everyone */}
       <Route
         path="/login"
         element={
@@ -42,7 +41,6 @@ const App = () => {
         }
       />
 
-      {/* Public register route: Accessible by everyone */}
       <Route
         path="/register"
         element={
@@ -52,7 +50,6 @@ const App = () => {
         }
       />
 
-      {/* Wildcard route for undefined paths. Shows a 404 error */}
       <Route path="*" element={<p>404 Not found</p>} />
     </Routes>
   );

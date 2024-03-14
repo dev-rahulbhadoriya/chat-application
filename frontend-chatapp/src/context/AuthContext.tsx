@@ -48,9 +48,9 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setToken(data.accessToken);
         LocalStorage.set("user", data.user);
         LocalStorage.set("token", data.accessToken);
-        navigate("/chat"); // Redirect to the chat page after successful login
+        navigate("/chat"); 
       },
-      alert // Display error alerts on request failure
+      alert 
     );
   };
 
@@ -67,7 +67,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         alert("Account created successfully! Go ahead and login.");
         navigate("/login"); // Redirect to the login page after successful registration
       },
-      alert // Display error alerts on request failure
+      alert 
     );
   };
 
@@ -82,7 +82,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         LocalStorage.clear(); // Clear local storage on logout
         navigate("/login"); // Redirect to the login page after successful logout
       },
-      alert // Display error alerts on request failure
+      alert 
     );
   };
 

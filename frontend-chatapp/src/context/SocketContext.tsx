@@ -5,10 +5,10 @@ import { LocalStorage } from "../utils";
 
 // Function to establish a socket connection with authorization token
 const getSocket = () => {
-  const token = LocalStorage.get("token"); // Retrieve jwt token from local storage or cookie
+  const token = LocalStorage.get("token");
 
   // Create a socket connection with the provided URI and authentication
-  return socketio(import.meta.env.SOCKET_URI, {
+  return socketio('https://chat-application-kgw5.onrender.com', {
     withCredentials: true,
     auth: { token },
   });
@@ -28,12 +28,11 @@ const useSocket = () => useContext(SocketContext);
 const SocketProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // State to store the socket instance
+  
   const [socket, setSocket] = useState<ReturnType<typeof socketio> | null>(
     null
   );
 
-  // Set up the socket connection when the component mounts
   useEffect(() => {
     setSocket(getSocket());
   }, []);
@@ -46,5 +45,4 @@ const SocketProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-// Export the SocketProvider component and the useSocket hook for other components to use
 export { SocketProvider, useSocket };
