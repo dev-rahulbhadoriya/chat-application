@@ -6,6 +6,7 @@ This is a chat application built using Node.js, Socket.IO, JSON Web Token (JWT),
 
 - Step 1: Go to the registration page and enter your email, username, and password.
 - Step 2: Navigate to the login page and enter your username and password.
+- For example use : username : akash , password : akash
 - Step 3: To start chatting, click on the "ADD Chat" button.
 - Step 4: Select a user to begin chatting.
 
